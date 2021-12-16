@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 27, 2021 at 12:42 AM
+-- Generation Time: Dec 16, 2021 at 01:47 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.5
 
@@ -52,7 +52,8 @@ CREATE TABLE `students` (
 -- Indexes for table `classes`
 --
 ALTER TABLE `classes`
-  ADD PRIMARY KEY (`code`);
+  ADD PRIMARY KEY (`code`),
+  ADD UNIQUE KEY `name` (`name`);
 
 --
 -- Indexes for table `students`
