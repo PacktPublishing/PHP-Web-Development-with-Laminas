@@ -1,0 +1,19 @@
+{
+	"name" : "school1/school1",
+	"require-dev" : {
+		"phpunit/phpunit" : "~9.5"
+	},
+	"require" : {
+		"laminas/laminas-db" : "~2.13"
+	},
+	"autoload" : {
+		"psr-4" : {
+			"School\\" : "src"
+		}
+	},
+	"autoload-dev" : {
+		"psr-4" : {
+			"SchoolTest\\" : "test"
+		}
+	}
+}
