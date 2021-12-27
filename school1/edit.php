@@ -3,7 +3,7 @@ use School\SchoolClass;
 
 require 'vendor/autoload.php';
 
-$code = $_GET['code'] ?? null;
+$code = ($_GET['code'] ?? null);
 
 $schoolClass = SchoolClass::getByCode($code);
 ?>
