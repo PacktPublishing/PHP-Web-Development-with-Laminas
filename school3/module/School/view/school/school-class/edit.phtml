@@ -1,0 +1,9 @@
+<h1>Classes Registration</h1>
+<form action="<?=$this->url('schoolclass',['action' => 'save'])?>" method="post">
+Name: <input type="text" name="name" autofocus="autofocus" value="<?=$this->schoolClass->name?>"><br/>
+<input type="hidden" name="code" value="<?=$this->schoolClass->code?>"><br/>
+<input type="submit" value="save">
+</form>
+<p>
+<a href="<?=$this->url('schoolclass')?>">Go back</a>
+</p>

@@ -1,0 +1,19 @@
+<h1>Students Registration</h1>
+<form action="<?=$this->url('student',['action' => 'save'])?>" method="post">
+Name: <input type="text" name="name" autofocus="autofocus" value="<?=$this->student->name?>">
+<select name="class_code">
+<?php
+foreach($this->schoolClasses as $schoolClass):
+?>
+<option value="<?=$schoolClass->code?>" <?=($schoolClass->code == $this->student->schoolClass->code ? 'selected="selected"' : '')?>><?=$schoolClass->name?></option>
+<?php    
+endforeach;
+?>
+</select>
+
+<input type="hidden" name="id" value="<?=$this->student->id?>"><br/>
+<input type="submit" value="save">
+</form>
+<p>
+<a href="<?=$this->url('student')?>">Go back</a>
+</p>

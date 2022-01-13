@@ -1,0 +1,26 @@
+<h1>Classes Registration</h1>
+<p>
+	<a href="<?=$this->url('schoolclass', ['action' => 'edit'])?>">Add a new class</a>
+</p>
+<table>
+	<thead>
+		<tr>
+			<th>code</th>
+			<th>name</th>
+		</tr>
+	</thead>
+	<tbody>
+<?php
+foreach($this->schoolClasses as $row):
+?>
+<tr>
+<td><a href="<?=$this->url('schoolclass',['action' => 'edit', 'code' => $row->code])?>"><?=$row->code?></a></td>
+<td><?=$row->name?></td>
+<td><a href="<?=$this->url('schoolclass',['action' => 'delete', 'code' => $row->code])?>">Remove</a></td>
+</tr>
+<?php
+endforeach;
+?>
+	</tbody>
+</table>
+<p><a href="<?=$this->url('home')?>">Homepage</a></p>
