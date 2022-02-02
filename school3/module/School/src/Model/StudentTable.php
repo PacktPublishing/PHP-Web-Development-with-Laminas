@@ -12,8 +12,6 @@ class StudentTable extends AbstractTable
 
     protected string $modelName = 'School\Model\Student';
 
-    private static ?StudentTable $instance = null;
-
     public function __construct(TableGatewayInterface $tableGateway)
     {
         $this->tableGateway = $tableGateway;

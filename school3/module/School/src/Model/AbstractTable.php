@@ -2,8 +2,6 @@
 declare(strict_types = 1);
 namespace School\Model;
 
-use Laminas\Db\Adapter\Adapter;
-use Laminas\Db\Adapter\AdapterInterface;
 use Laminas\Db\TableGateway\TableGatewayInterface;
 
 abstract class AbstractTable
