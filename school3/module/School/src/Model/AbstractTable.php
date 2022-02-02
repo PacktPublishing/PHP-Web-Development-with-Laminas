@@ -65,11 +65,4 @@ abstract class AbstractTable
         }
         return true;
     }
-
-    protected static function getAdapter(): AdapterInterface
-    {
-        $config = require (realpath(__DIR__ . '/../config') . '/config.php');
-        $adapter = new Adapter($config['db']);
-        return $adapter;
-    }
 }
