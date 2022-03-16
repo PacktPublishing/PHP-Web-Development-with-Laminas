@@ -1,0 +1,24 @@
+<?php
+$this->headScript()->appendScript(file_get_contents(__DIR__ . '/edit.js'));
+?>
+<h1>Product <?=(empty($this->product->code) ? 'insert' : 'update')?></h1>
+<form id="product">
+Name: <input type="text" name="name" autofocus="autofocus" value="<?=$this->product->name?>"><br/>
+Price: <input type="text" name="price" value="<?=$this->product->price?>"><br/>
+Discount: <select name="code_discount">
+<?php
+foreach($this->discounts as $discount):
+?>
+<option value="<?=$discount->code?>" <?=($discount->code == $this->product->discount->code ? 'selected' : '')?> ><?=$discount->name?></option>
+<?php
+endforeach;
+?>
+</select><br/>
+<input type="hidden" name="code" value="<?=$this->product->code?>">
+</form>
+<button id="save">save</button>
+<p>
+	<span id="api" url="<?=$this->url('inventoryapi',['controller' => 'productapi'])?>"></span>
+	<span id="target" url="<?=$this->url('inventory',['controller' => 'product'])?>"></span>
+	<a href="<?=$this->url('inventory',['controller' => 'product'])?>">Go back</a>
+</p>
