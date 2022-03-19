@@ -11,7 +11,8 @@ var save = function(){
 			alert('error');
 		});	
 	} else {
-		$.put( api, formData , function(data){
+		api = $( "#api" ).attr("url") + '/' + $(this).attr('code');
+		$.ajax({url: api, type: 'PUT', data: formData}).done(function(data){
 			alert("product has been updated");
 			window.location.href =  target;
 		}).fail(function(){
