@@ -1,0 +1,16 @@
+<?php
+$this->headScript()->appendScript(file_get_contents(__DIR__ . '/edit.js'));
+?>
+<h1>Employee <?=(empty($this->employee->ID) ? 'insert' : 'update')?></h1>
+<form id="employee">
+Name: <input type="text" name="name" autofocus="autofocus" value="<?=$this->employee->name?>"><br/>
+Nickname: <input type="text" name="nickname" value="<?=$this->employee->nickname?>"><br/>
+Password: <input type="password" name="password" value="<?=$this->employee->password?>"><br/>
+<input type="hidden" name="ID" value="<?=$this->employee->ID?>">
+</form>
+<button id="save">save</button>
+<p>
+	<span id="api" url="<?=$this->url('inventoryapi',['controller' => 'employeeapi'])?>"></span>
+	<span id="target" url="<?=$this->url('inventory',['controller' => 'employee'])?>"></span>
+	<a href="<?=$this->url('inventory',['controller' => 'employee'])?>">Go back</a>
+</p>

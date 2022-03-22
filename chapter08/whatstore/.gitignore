@@ -1,0 +1,11 @@
+.project
+.settings/
+.phpunit.result.cache
+.buildpath
+.vagrant/
+vendor/
+config/development.config.php
+data/cache/*
+!data/cache/.gitkeep
+phpunit.xml
+.phpunit.result.cache
