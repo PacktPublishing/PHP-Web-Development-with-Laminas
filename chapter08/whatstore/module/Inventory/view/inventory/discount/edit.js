@@ -17,7 +17,7 @@ var save = function(){
 	} else {		
 		api = $( "#api" ).attr("url") + '/' + $(this).attr('code');
 		$.ajax({url: api, type: 'PUT', data: formData}).done(function(data){
-			if (data.inserted == 'invalid'){
+			if (data.updated == 'invalid'){
 				alert('Invalid data!');
 				return;
 			}

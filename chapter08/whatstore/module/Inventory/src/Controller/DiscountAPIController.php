@@ -43,7 +43,7 @@ class DiscountAPIController extends AbstractRestfulController
         $inputFilter = $discount->getInputFilter();
         $inputFilter->setData($data);
         if (!$inputFilter->isValid()){
-            return new JsonModel(['inserted' => 'invalid']);
+            return new JsonModel(['updated' => 'invalid']);
         }
         $discount->exchangeArray($data);
         $updated = $this->discountTable->save($discount);
