@@ -1,0 +1,32 @@
+<?php
+$this->headScript()->appendScript(file_get_contents(__DIR__ . '/index.js'));
+?>
+<h1>Product Registration</h1>
+<a href="<?=$this->url('inventory', ['controller' => 'product','action' => 'edit'])?>">Add product</a>
+<table>
+	<thead>
+		<tr>
+			<th>code</th>
+			<th>name</th>
+			<th>price</th>
+			<th>discount</th>
+		</tr>
+	</thead>
+	<tbody>
+<?php
+foreach ($this->products as $product) :
+?>
+		<tr>
+			<td><button id="<?=$product->code?>" class="edit"><?=$product->code?></button></td>
+			<td><?=$product->name?></td>
+			<td><?=$product->price?></td>
+			<td><?=$product->discount->name?></td>
+			<td><button id="<?=$product->code?>" class="delete">delete</button></td>
+		</tr>
+<?php
+endforeach;
+?>
+	</tbody>
+</table>
+<span id="api" url="<?=$this->url('inventoryapi',['controller' => 'productapi'])?>"></span>
+<span id="target" url="<?=$this->url('inventory',['controller' => 'product'])?>"></span>

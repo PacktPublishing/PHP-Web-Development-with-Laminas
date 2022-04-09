@@ -1,0 +1,22 @@
+<?php
+/**
+ * @var Laminas\View\Renderer\PhpRenderer $this
+ */
+$this->headScript()->appendScript(file_get_contents(__DIR__ . '/index.js'));
+?>
+<h1>Inventory Module</h1>
+<?php
+$form = $this->form;
+echo $this->form()->openTag($form);
+echo $this->formLabel($form->get('nickname'));
+echo $this->formText($form->get('nickname')) . '<br/>';
+echo $this->formLabel($form->get('password'));
+echo $this->formPassword($form->get('password'));
+echo $this->form()->closeTag();
+?>
+<button id="login">login</button>
+<p>
+	<span id="api" url="<?=$this->url('inventory',['controller' => 'index', 'action' => 'login'])?>"></span>
+	<span id="target" url="<?=$this->url('inventory',['controller' => 'menu'])?>"></span>
+	<a href="<?=$this->url('inventory')?>">Go back</a>
+</p>
