@@ -73,7 +73,7 @@ class EmployeeAPIControllerTest extends AbstractHttpControllerTestCase
     public function testEmployeeDelete(): void
     {
         $employeeTable = $this->getApplication()->getServiceManager()->get('EmployeeTable');
-        $employee = $employeeTable->getByField('name',strtoupper('Buffalo Bill'));
+        $employee = $employeeTable->getByField('nickname',strtoupper('Buffalo Bill'));
         $this->dispatch('/inventoryapi/employeeapi/' . $employee->ID, 'DELETE');
         $this->assertResponseStatusCode(200);
         $this->assertModuleName('inventory');
