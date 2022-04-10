@@ -58,7 +58,7 @@ class EmployeeAPIControllerTest extends AbstractHttpControllerTestCase
     public function testEmployeeUpdate(): void
     {
         $employeeTable = $this->getApplication()->getServiceManager()->get('EmployeeTable');
-        $employee = $employeeTable->getByField('name','no employee');
+        $employee = $employeeTable->getByField('name',strtoupper('Jackson Heart'))
         $employee->name = 'William Cody';
         $employee->nickname = 'Buffalo Bill';
         $_POST = $employee->toArray();
@@ -73,7 +73,7 @@ class EmployeeAPIControllerTest extends AbstractHttpControllerTestCase
     public function testEmployeeDelete(): void
     {
         $employeeTable = $this->getApplication()->getServiceManager()->get('EmployeeTable');
-        $employee = $employeeTable->getByField('name','Buffalo Bill');
+        $employee = $employeeTable->getByField('name',strtoupper('Buffalo Bill'));
         $this->dispatch('/inventoryapi/employeeapi/' . $employee->ID, 'DELETE');
         $this->assertResponseStatusCode(200);
         $this->assertModuleName('inventory');
