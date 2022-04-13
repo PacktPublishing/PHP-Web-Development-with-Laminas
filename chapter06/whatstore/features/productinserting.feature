@@ -1,6 +1,6 @@
 Feature: Product inserting
   In order to have products in the stock
-  As an employee
+  As a employee
   I need to be able to add a product to the product registration
 
   Rules:
@@ -11,5 +11,5 @@ Feature: Product inserting
   Scenario: Inserting a product in the registration
     Given there is a product called "Troop Power Battery", which costs $2814
     When I add this product to the registration
-    I should have a product called "Troop Power Battery" in the table products
+    Then I should have a product called "Troop Power Battery" in the table products
     And the overall product price should be $2814
