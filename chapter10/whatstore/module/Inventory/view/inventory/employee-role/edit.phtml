@@ -1,0 +1,19 @@
+<?php
+$this->headScript()->appendScript(file_get_contents(__DIR__ . '/edit.js'));
+?>
+<h1>Add role to an employee</h1>
+<?php
+$form = $this->form;
+echo $this->form()->openTag($form);
+echo $this->formLabel($form->get('code_role'));
+echo $this->formSelect($form->get('code_role'));
+echo $this->formLabel($form->get('ID_employee'));
+echo $this->formSelect($form->get('ID_employee'));
+echo $this->form()->closeTag();
+?>
+<button id="save">save</button>
+<p>
+	<span id="api" url="<?=$this->url('inventoryapi',['controller' => 'employeeroleapi'])?>"></span>
+	<span id="target" url="<?=$this->url('inventory',['controller' => 'employeerole'])?>"></span>
+	<a href="<?=$this->url('inventory',['controller' => 'employeerole'])?>">Go back</a>
+</p>

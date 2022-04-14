@@ -1,0 +1,19 @@
+<?php
+$this->headScript()->appendScript(file_get_contents(__DIR__ . '/edit.js'));
+?>
+<h1>Grant permission to a resource</h1>
+<?php
+$form = $this->form;
+echo $this->form()->openTag($form);
+echo $this->formLabel($form->get('code_role'));
+echo $this->formSelect($form->get('code_role'));
+echo $this->formLabel($form->get('code_resource'));
+echo $this->formSelect($form->get('code_resource'));
+echo $this->form()->closeTag();
+?>
+<button id="save">save</button>
+<p>
+	<span id="api" url="<?=$this->url('inventoryapi',['controller' => 'roleresourceapi'])?>"></span>
+	<span id="target" url="<?=$this->url('inventory',['controller' => 'roleresource'])?>"></span>
+	<a href="<?=$this->url('inventory',['controller' => 'roleresource'])?>">Go back</a>
+</p>

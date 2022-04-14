@@ -1,0 +1,30 @@
+<?php
+$this->headScript()->appendScript(file_get_contents(__DIR__ . '/index.js'));
+?>
+<h1>Customer Registration</h1>
+<a href="<?=$this->url('store', ['controller' => 'customer','action' => 'edit'])?>">Add customer</a>
+<table>
+	<thead>
+		<tr>
+			<th>IDN</th>
+			<th>name</th>
+			<th>e-mail</th>
+		</tr>
+	</thead>
+	<tbody>
+<?php
+foreach ($this->customers as $customer) :
+?>
+		<tr>
+			<td><button id="<?=$customer->IDN?>" class="edit"><?=$customer->IDN?></button></td>
+			<td><?=$customer->name?></td>
+			<td><?=$customer->email?></td>
+			<td><button id="<?=$customer->IDN?>" class="delete">delete</button></td>
+		</tr>
+<?php
+endforeach;
+?>
+	</tbody>
+</table>
+<span id="api" url="<?=$this->url('storeapi',['controller' => 'customerapi'])?>"></span>
+<span id="target" url="<?=$this->url('store',['controller' => 'customer'])?>"></span>

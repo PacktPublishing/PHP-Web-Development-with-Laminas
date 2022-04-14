@@ -1,0 +1,33 @@
+<?php
+$this->headScript()->appendScript(file_get_contents(__DIR__ . '/index.js'));
+?>
+<h1>Discount Registration</h1>
+<a href="<?=$this->url('inventory', ['controller' => 'discount','action' => 'edit'])?>">Add discount</a>
+<table>
+	<thead>
+		<tr>
+			<th>code</th>
+			<th>name</th>
+			<th>operator</th>
+			<th>factor</th>
+		</tr>
+	</thead>
+	<tbody>
+<?php
+foreach ($this->discounts as $discount) :
+?>
+		<tr>
+			<td><button id="<?=$discount->code?>" class="edit"><?=$discount->code?></button></td>
+			<td><?=$discount->name?></td>
+			<td><?=$discount->operator?></td>
+			<td><?=$discount->factor?></td>
+			<td><button id="<?=$discount->code?>" class="delete">delete</button></td>
+		</tr>
+<?php
+endforeach;
+?>
+	</tbody>
+</table>
+<span id="api" url="<?=$this->url('inventoryapi',['controller' => 'discountapi'])?>"></span>
+<span id="target" url="<?=$this->url('inventory',['controller' => 'discount'])?>"></span>
+<a href="<?=$this->url('inventory',['controller' => 'menu'])?>">Go back</a>
