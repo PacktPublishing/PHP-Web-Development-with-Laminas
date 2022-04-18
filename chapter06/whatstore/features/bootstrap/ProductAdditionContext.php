@@ -13,7 +13,7 @@ use Generic\Context\AbstractContext;
 /**
  * Defines application features from the specific context.
  */
-class ProductInsertingContext extends AbstractContext
+class ProductAdditionContext extends AbstractContext
 {
     private ?Product $product = null;
     private ?ProductTable $productTable = null;

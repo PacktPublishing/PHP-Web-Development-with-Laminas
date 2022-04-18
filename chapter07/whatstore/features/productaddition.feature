@@ -1,4 +1,4 @@
-Feature: Product inserting
+Feature: Product addition
   In order to have products in the stock
   As an employee
   I need to be able to add a product to the product registration

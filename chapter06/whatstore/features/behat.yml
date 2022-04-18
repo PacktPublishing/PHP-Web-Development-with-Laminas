@@ -6,7 +6,7 @@ default:
             paths:
                 - '%paths.base%'
             contexts:
-                - ProductInsertingContext
+                - ProductAdditionContext
                 - ProductUpdatingContext
                 - DiscountCRUDContext
                 - ProductStockManagementContext
