@@ -1,6 +1,6 @@
 Feature: Product inserting
   In order to have products in the stock
-  As a employee
+  As an employee
   I need to be able to add a product to the product registration
 
   Rules:
