@@ -1,6 +1,6 @@
 Feature: Product updating
   In order to keep products up-to-date in the stock
-  As a employee
+  As an employee
   I need to be able to change data of a product from the product registration
 
   Scenario: Updating a product in the registration
