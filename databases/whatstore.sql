@@ -80,10 +80,10 @@ CREATE TABLE `employee_roles` (
 
 CREATE TABLE `inventory` (
   `code_product` int(11) NOT NULL,
-  `amount` int(11) NOT NULL,
-  `maximum` int(11) NOT NULL,
-  `miminum` int(11) NOT NULL,
-  `reserved` int(11) NOT NULL
+  `amount` int(11) NOT NULL DEFAULT '0',
+  `maximum` int(11) NOT NULL DEFAULT '0',
+  `miminum` int(11) NOT NULL DEFAULT '0',
+  `reserved` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -208,7 +208,7 @@ ALTER TABLE `employee_roles`
 -- Índices de tabela `inventory`
 --
 ALTER TABLE `inventory`
-  ADD KEY `code_product` (`code_product`);
+  ADD PRIMARY KEY (`code_product`);
 
 --
 -- Índices de tabela `order_items`

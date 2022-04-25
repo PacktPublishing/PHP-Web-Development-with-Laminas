@@ -93,11 +93,11 @@ CREATE TABLE IF NOT EXISTS `employee_roles` (
 DROP TABLE IF EXISTS `inventory`;
 CREATE TABLE IF NOT EXISTS `inventory` (
   `code_product` int(11) NOT NULL,
-  `amount` int(11) NOT NULL,
-  `maximum` int(11) NOT NULL,
-  `minimum` int(11) NOT NULL,
-  `reserved` int(11) NOT NULL,
-  KEY `code_product` (`code_product`)
+  `amount` int(11) NOT NULL DEFAULT '0',
+  `maximum` int(11) NOT NULL DEFAULT '0',
+  `minimum` int(11) NOT NULL DEFAULT '0',
+  `reserved` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`code_product`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
