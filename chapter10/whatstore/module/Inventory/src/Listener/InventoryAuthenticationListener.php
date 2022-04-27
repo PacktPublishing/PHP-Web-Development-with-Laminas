@@ -10,7 +10,7 @@ class InventoryAuthenticationListener
     public static function verifyIdentity(MvcEvent $event)
     {
         $routeName = $event->getRouteMatch()->getMatchedRouteName();
-        if (!$routeName == 'inventory'){
+        if ($routeName !== 'inventory'){
             return;
         }
         $authenticationService = new AuthenticationService();
