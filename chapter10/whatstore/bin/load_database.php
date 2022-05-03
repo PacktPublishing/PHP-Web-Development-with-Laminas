@@ -43,7 +43,7 @@ SQL;
 SQL;
     $adapter->query($sqlscript, Adapter::QUERY_MODE_EXECUTE);
     
-    echo "A user and a role were created.\n";
+    echo "An user and a role were created.\n";
 }
 
 function getResources(array $controllers): String
