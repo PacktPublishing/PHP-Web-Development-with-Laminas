@@ -1,0 +1,22 @@
+<?php
+$this->headScript()->appendScript(file_get_contents(__DIR__ . '/edit.js'));
+?>
+<h1>Employee <?=(empty($this->employee->ID) ? 'insert' : 'update')?></h1>
+<?php
+$form = $this->form;
+echo $this->form()->openTag($form);
+echo $this->formLabel($form->get('name'));
+echo $this->formText($form->get('name')) . '<br/>';
+echo $this->formLabel($form->get('nickname'));
+echo $this->formText($form->get('nickname')) . '<br/>';
+echo $this->formLabel($form->get('password'));
+echo $this->formPassword($form->get('password')) . '<br/>';
+echo $this->formHidden($form->get('ID'));
+echo $this->form()->closeTag();
+?>
+<button id="save">save</button>
+<p>
+	<span id="api" url="<?=$this->url('inventoryapi',['controller' => 'employeeapi'])?>"></span>
+	<span id="target" url="<?=$this->url('inventory',['controller' => 'employee'])?>"></span>
+	<a href="<?=$this->url('inventory',['controller' => 'employee'])?>">Go back</a>
+</p>

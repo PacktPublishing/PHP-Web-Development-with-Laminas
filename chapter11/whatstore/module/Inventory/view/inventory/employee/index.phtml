@@ -1,0 +1,31 @@
+<?php
+$this->headScript()->appendScript(file_get_contents(__DIR__ . '/index.js'));
+?>
+<h1>Employee Registration</h1>
+<a href="<?=$this->url('inventory', ['controller' => 'employee','action' => 'edit'])?>">Add employee</a>
+<table>
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>name</th>
+			<th>nickname</th>
+		</tr>
+	</thead>
+	<tbody>
+<?php
+foreach ($this->employees as $employee) :
+?>
+		<tr>
+			<td><button id="<?=$employee->ID?>" class="edit"><?=$employee->ID?></button></td>
+			<td><?=$employee->name?></td>
+			<td><?=$employee->nickname?></td>
+			<td><button id="<?=$employee->ID?>" class="delete">delete</button></td>
+		</tr>
+<?php
+endforeach;
+?>
+	</tbody>
+</table>
+<span id="api" url="<?=$this->url('inventoryapi',['controller' => 'employeeapi'])?>"></span>
+<span id="target" url="<?=$this->url('inventory',['controller' => 'employee'])?>"></span>
+<a href="<?=$this->url('inventory',['controller' => 'menu'])?>">Go back</a>

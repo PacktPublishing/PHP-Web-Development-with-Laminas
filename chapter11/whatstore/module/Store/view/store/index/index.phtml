@@ -1,0 +1,30 @@
+<?php
+use Laminas\Authentication\AuthenticationService;
+
+/**
+ * @var Laminas\View\Renderer\PhpRenderer $this
+ */
+$this->headScript()->appendScript(file_get_contents(__DIR__ . '/index.js'));
+$this->placeholder('products')->form = $this->form;
+$this->placeholder('products')->index = 1;
+$this->partialLoop()->setObjectKey('product');
+
+$authenticationService = new AuthenticationService();
+$link = ['action' => 'index', 'label' => 'Login'];
+if ($authenticationService->hasIdentity()){
+    $link = ['action' => 'logout', 'label' => 'Logout'];
+}
+?>
+<h1>Our products</h1>
+<table style="width: 100%">
+<tbody>
+<tr>
+<td><a href="<?=$this->url('store',['controller' => 'productbasket'])?>">Product Basket</a></td>
+<td><a href="<?=$this->url('store',['controller' => 'customer','action' => $link['action']])?>"><?=$link['label']?></a></td>
+</tr>
+</tbody>
+</table>
+<?=$this->partialLoop('products',$this->products)?>
+<span id="api" url="<?=$this->url('storeapi',['controller' => 'productbasketapi'])?>"></span>
+<span id="target" url="<?=$this->url('store',['controller' => 'productbasket'])?>"></span>   
+

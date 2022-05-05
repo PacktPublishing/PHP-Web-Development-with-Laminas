@@ -1,0 +1,20 @@
+<?php
+$this->headScript()->appendScript(file_get_contents(__DIR__ . '/edit.js'));
+?>
+<h1>Resource <?=(empty($this->resource->code) ? 'insert' : 'update')?></h1>
+<?php
+$form = $this->form;
+echo $this->form()->openTag($form);
+echo $this->formLabel($form->get('name'));
+echo $this->formText($form->get('name')) . '<br/>';
+echo $this->formLabel($form->get('method'));
+echo $this->formSelect($form->get('method')) . '<br/>';
+echo $this->formHidden($form->get('code'));
+echo $this->form()->closeTag();
+?>
+<button id="save">save</button>
+<p>
+	<span id="api" url="<?=$this->url('inventoryapi',['controller' => 'resourceapi'])?>"></span>
+	<span id="target" url="<?=$this->url('inventory',['controller' => 'resource'])?>"></span>
+	<a href="<?=$this->url('inventory',['controller' => 'resource'])?>">Go back</a>
+</p>

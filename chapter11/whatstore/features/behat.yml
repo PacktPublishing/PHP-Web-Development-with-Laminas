@@ -1,0 +1,14 @@
+default:
+    autoload:
+        '': '%paths.base%/bootstrap'
+    suites:
+        default:
+            paths:
+                - '%paths.base%'
+            contexts:
+                - ProductAdditionContext
+                - ProductUpdatingContext
+                - DiscountCRUDContext
+                - ProductStockManagementContext
+                - CustomerRegistrationContext
+                - EmployeeCRUDContext
