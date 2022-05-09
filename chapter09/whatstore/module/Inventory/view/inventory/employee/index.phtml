@@ -3,7 +3,7 @@ $this->headScript()->appendScript(file_get_contents(__DIR__ . '/index.js'));
 ?>
 <h1>Employee Registration</h1>
 <a href="<?=$this->url('inventory', ['controller' => 'employee','action' => 'edit'])?>">Add employee</a>
-<table>
+<table class="table">
 	<thead>
 		<tr>
 			<th>ID</th>
