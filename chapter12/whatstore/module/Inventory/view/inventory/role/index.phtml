@@ -1,0 +1,29 @@
+<?php
+$this->headScript()->appendScript(file_get_contents(__DIR__ . '/index.js'));
+?>
+<h1>Resource Registration</h1>
+<a href="<?=$this->url('inventory', ['controller' => 'role','action' => 'edit'])?>">Add role</a>
+<table>
+	<thead>
+		<tr>
+			<th>code</th>
+			<th>name</th>
+		</tr>
+	</thead>
+	<tbody>
+<?php
+foreach ($this->roles as $role) :
+?>
+		<tr>
+			<td><button id="<?=$role->code?>" class="edit"><?=$role->code?></button></td>
+			<td><?=$role->name?></td>
+			<td><button id="<?=$role->code?>" class="delete">delete</button></td>
+		</tr>
+<?php
+endforeach;
+?>
+	</tbody>
+</table>
+<span id="api" url="<?=$this->url('inventoryapi',['controller' => 'roleapi'])?>"></span>
+<span id="target" url="<?=$this->url('inventory',['controller' => 'role'])?>"></span>
+<a href="<?=$this->url('inventory',['controller' => 'menu'])?>">Go back</a>

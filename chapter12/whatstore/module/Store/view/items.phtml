@@ -1,0 +1,9 @@
+<tr>
+<td><?=$this->code?></td>
+<td><?=$this->name?></td>
+<td><?=$this->price?></td>
+<td><?=$this->amount?></td>
+</tr>
+<?php
+$this->placeholder('order')->total+= ($this->price * $this->amount);
+?>

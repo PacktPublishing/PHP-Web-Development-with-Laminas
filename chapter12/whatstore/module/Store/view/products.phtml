@@ -1,0 +1,36 @@
+<?php
+$index = $this->placeholder('products')->index;
+if ((($index - 1) % 3) == 0):
+?>
+<div class="row">
+<?php
+endif;
+?>
+<div class="col-md-3">
+	<p>
+<?php
+$form = $this->placeholder('products')->form;
+$form->setAttribute('id', 'product' . $this->product->code);
+$form->bind($this->product);
+$form->get('amount')->setValue(1);
+echo $this->form()->openTag($form);
+echo $this->formText($form->get('name')) . '<br/>';
+echo $this->formLabel($form->get('price'));
+echo $this->formText($form->get('price')) . '<br/>';
+echo $this->formLabel($form->get('amount'));
+echo $this->formNumber($form->get('amount')) . '<br/>';
+echo $this->formHidden($form->get('code'));
+echo $this->form()->closeTag();
+?>                
+	</p>
+	<button class="buy" id="<?=$this->product->code?>">Buy</button>
+</div>	    
+<?php
+$index = $this->placeholder('products')->index;
+if ($index % 3 == 0):
+?>
+</div>
+<?php
+endif;
+$this->placeholder('products')->index = ++$index;
+?>  

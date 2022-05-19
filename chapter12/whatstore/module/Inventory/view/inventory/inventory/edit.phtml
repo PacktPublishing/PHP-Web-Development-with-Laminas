@@ -1,0 +1,20 @@
+<?php
+$this->headScript()->appendScript(file_get_contents(__DIR__ . '/edit.js'));
+?>
+<h1>Inventory Management</h1>
+<?php
+$form = $this->form;
+echo $this->form()->openTag($form);
+echo $this->formLabel($form->get('name'));
+echo $this->formText($form->get('name'));
+echo $this->formSelect($form->get('operation'));
+echo $this->formNumber($form->get('amount'));
+echo $this->formHidden($form->get('code_product'));
+echo $this->form()->closeTag();
+?>
+<button id="save">save</button>
+<p>
+	<span id="api" url="<?=$this->url('inventoryapi',['controller' => 'inventoryapi'])?>"></span>
+	<span id="target" url="<?=$this->url('inventory',['controller' => 'inventory'])?>"></span>
+	<a href="<?=$this->url('inventory',['controller' => 'inventory'])?>">Go back</a>
+</p>

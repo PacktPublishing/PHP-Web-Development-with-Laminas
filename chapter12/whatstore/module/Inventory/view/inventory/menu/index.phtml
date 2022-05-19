@@ -1,0 +1,32 @@
+<h1>Inventory Module</h1>
+
+<p>Hi, <?=$this->user?></p>
+
+<ul>
+<li><a href="<?=$this->url('inventory',[
+    'controller' => 'product'
+])?>">Product Registration</a></li>
+<li><a href="<?=$this->url('inventory',[
+    'controller' => 'discount'
+])?>">Discount Registration</a></li>
+<li><a href="<?=$this->url('inventory',[
+    'controller' => 'employee'
+])?>">Employee Registration</a></li>
+<li><a href="<?=$this->url('inventory',[
+    'controller' => 'inventory'
+])?>">Inventory Management</a></li>
+<li><a href="<?=$this->url('inventory',[
+    'controller' => 'role'
+])?>">Role Registration</a></li>
+<li><a href="<?=$this->url('inventory',[
+    'controller' => 'resource'
+])?>">Resource Registration</a></li>
+<li><a href="<?=$this->url('inventory',[
+    'controller' => 'roleresource'
+])?>">Resources of a role</a></li>
+<li><a href="<?=$this->url('inventory',[
+    'controller' => 'employeerole'
+])?>">Roles of an employee</a></li>
+</ul>
+
+<a href="<?=$this->url('inventory',['action' => 'logout'])?>">Logout</a>

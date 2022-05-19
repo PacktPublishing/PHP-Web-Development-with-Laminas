@@ -1,0 +1,20 @@
+<?php
+$this->headScript()->appendScript(file_get_contents(__DIR__ . '/index.js'));
+?>
+<h1>Customer Login</h1>
+<?php
+$form = $this->form;
+echo $this->form()->openTag($form);
+echo $this->formLabel($form->get('email'));
+echo $this->formEmail($form->get('email')) . '<br/>';
+echo $this->formLabel($form->get('password'));
+echo $this->formPassword($form->get('password')) . '<br/>';
+echo $this->form()->closeTag();
+?>
+<button id="login">login</button>
+<p>
+	<span id="api" url="<?=$this->url('store',['controller' => 'customer'])?>"></span>
+	<span id="target" url="<?=$this->url('store',['controller' => 'order'])?>"></span>
+	<p>Don't you have an account? <a href="<?=$this->url('store',['controller' => 'customer', 'action' => 'register'])?>">Register!</a></p>
+	<p><a href="<?=$this->url('store')?>">Go back</a></p>
+</p>

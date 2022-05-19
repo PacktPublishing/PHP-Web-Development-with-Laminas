@@ -1,0 +1,18 @@
+<?php
+$this->headScript()->appendScript(file_get_contents(__DIR__ . '/edit.js'));
+?>
+<h1>Role <?=(empty($this->role->code) ? 'insert' : 'update')?></h1>
+<?php
+$form = $this->form;
+echo $this->form()->openTag($form);
+echo $this->formLabel($form->get('name'));
+echo $this->formText($form->get('name')) . '<br/>';
+echo $this->formHidden($form->get('code'));
+echo $this->form()->closeTag();
+?>
+<button id="save">save</button>
+<p>
+	<span id="api" url="<?=$this->url('inventoryapi',['controller' => 'roleapi'])?>"></span>
+	<span id="target" url="<?=$this->url('inventory',['controller' => 'role'])?>"></span>
+	<a href="<?=$this->url('inventory',['controller' => 'role'])?>">Go back</a>
+</p>
