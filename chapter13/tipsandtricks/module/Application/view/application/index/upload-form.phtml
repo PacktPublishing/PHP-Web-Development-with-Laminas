@@ -1,0 +1,29 @@
+<?php
+$form = $this->form;
+$form->prepare(); // The correct enctype is set here
+$fileElement = $form->get('image-file');
+echo $this->form()->openTag($form);
+?>
+
+    <div class="form-element">
+        <?= $this->formLabel($fileElement) ?>
+        <?= $this->formFile($fileElement) ?>
+        <?= $this->formElementErrors($fileElement) ?>
+    </div>
+
+    <button>Submit</button>
+
+<?php
+echo $this->form()->closeTag();
+if (!empty($this->data)):
+?>
+	<h2>Upload data</h2>
+	<pre>    
+<?php
+    echo print_r($this->data,true);
+?>
+	</pre>
+	<a href="<?=$this->url('application',['action' => 'show-image'])?>">See the uploaded image</a>
+<?php    
+endif;
+?>

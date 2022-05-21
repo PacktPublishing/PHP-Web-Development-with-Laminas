@@ -1,0 +1,85 @@
+<?php
+/**
+ * @var Laminas\View\Renderer\PhpRenderer $this
+ */
+$url = $this->url('application',['action' => 'ajax']);
+$script = <<<SCRIPT
+var checkRequest = function(){
+    $.ajax({url: '$url', type: 'GET'}).done(function(){
+		alert("It was a XML HTTP request!");
+    }).fail(function(){
+        alert('error');
+    });
+};
+$(document).ready(function(){
+	$("#ajax").click(checkRequest);
+});
+SCRIPT;
+$this->headScript()->appendScript($script);
+?>
+<div class="jumbotron">
+    <h1 class="display-4">Laminas Tips & Tricks</h1>
+</div>
+
+<div class="card-deck">
+    <div class="card">
+        <h2 class="card-header">Model Layer</h2>
+        <div class="card-body">
+        <p>
+            <a class="btn btn-primary" href="<?=$this->url('application',['action' => 'filter'])?>">
+                Customized filter
+            </a>        
+		</p>
+		<p>
+            <a class="btn btn-primary" href="<?=$this->url('application',['action' => 'validator'])?>">
+                Customized validator
+            </a>
+        </p>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2 class="card-header">View Layer</h2>
+        <div class="card-body">
+        <p>
+            <a class="btn btn-primary" href="<?=$this->url('application',['action' => 'show-json'])?>">
+                Json response
+            </a>
+        </p>        
+        <p>
+            <a class="btn btn-primary" href="<?=$this->url('application',['action' => 'upload-form'])?>">
+                Uploading an image
+            </a>
+        </p>
+        <p> 
+            <a class="btn btn-primary" href="<?=$this->url('application',['action' => 'show-image'])?>">
+                View uploaded image
+            </a>
+        </p>
+        <p> 
+            <a class="btn btn-primary" href="<?=$this->url('application',['action' => 'change-layout'])?>">
+                Change layout
+            </a>
+        </p>                        
+        </div>
+    </div>
+
+    <div class="card">
+        <h2 class="card-header">Controller Layer</h2>
+        <div class="card-body">
+        <p>
+            <button id="ajax">Asynchronous request</button>
+        </p>        
+        <p>
+            <a class="btn btn-primary" href="<?=$this->url('application',['action' => 'ajax'])?>">
+                Synchronous request
+            </a>
+        </p>
+        <p>
+            <a class="btn btn-primary" href="<?=$this->url('application',['action' => 'flash-messenger'])?>">
+                Flash messenger
+            </a>
+        </p>                
+        </div>
+    </div>
+</div>

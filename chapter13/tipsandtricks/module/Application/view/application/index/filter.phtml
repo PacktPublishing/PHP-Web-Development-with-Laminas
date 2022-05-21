@@ -1,0 +1,6 @@
+<h1>Filter Sample</h1>
+<form action="<?=$this->url('application',['action' => 'filter'])?>" method="post">
+Expression: <input type="text" name="expression" value="<?=$this->expression?>">
+<input type="submit" value="How does Zatanna say this?">
+</form>
+<p><?=$this->response?></p>

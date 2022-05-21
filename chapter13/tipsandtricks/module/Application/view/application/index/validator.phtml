@@ -1,0 +1,6 @@
+<h1>Validator Sample</h1>
+<form action="<?=$this->url('application',['action' => 'validator'])?>" method="post">
+Expression: <input type="text" name="expression" value="<?=$this->expression?>">
+<input type="submit" value="Is a palindrome?">
+</form>
+<p><?=$this->response?></p>
