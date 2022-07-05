@@ -32,7 +32,7 @@ class Discount extends AbstractModel
     {
         $inputFilter = new InputFilter();
         
-        $input = new Input('code');        
+        $input = new Input('code');
         $filterChain = new FilterChain();
         $filterChain->attach(new ToInt());
         $input->setFilterChain($filterChain);
@@ -41,7 +41,7 @@ class Discount extends AbstractModel
         $input = new Input('name');
         $filterChain = new FilterChain();
         $filterChain->attach(new StringToUpper())
-        ->attach(new Alnum(true));        
+        ->attach(new Alnum(true));
         $input->setFilterChain($filterChain);
         $validatorChain = new ValidatorChain();
         $validatorChain->attach(new StringLength(['min' => 3]));
