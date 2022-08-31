@@ -8,7 +8,6 @@
 return [
     'Laminas\Router',
     'Laminas\Validator',
-    'Laminas\ZendFrameworkBridge',
     'Store',
     'Inventory',
     'Application',
