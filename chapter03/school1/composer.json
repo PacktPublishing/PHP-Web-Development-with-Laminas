@@ -4,7 +4,7 @@
 		"phpunit/phpunit" : "~9.5"
 	},
 	"require" : {
-		"laminas/laminas-db" : "~2.13"
+		"laminas/laminas-db" : "~2.15"
 	},
 	"autoload" : {
 		"psr-4" : {
