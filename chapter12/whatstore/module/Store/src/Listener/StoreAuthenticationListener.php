@@ -2,7 +2,6 @@
 namespace Store\Listener;
 
 use Laminas\Mvc\MvcEvent;
-use Laminas\Http\PhpEnvironment\Request;
 use Generic\Model\Identity;
 use Store\Model\Customer;
 

@@ -3,7 +3,6 @@ namespace Store\Listener;
 
 use Laminas\Mvc\MvcEvent;
 use Laminas\Authentication\AuthenticationService;
-use Laminas\Http\PhpEnvironment\Request;
 
 class StoreAuthenticationListener
 {
