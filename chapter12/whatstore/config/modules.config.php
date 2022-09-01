@@ -15,7 +15,6 @@ return [
     'Laminas\Db',
     'Laminas\Router',
     'Laminas\Validator',
-    'Laminas\ZendFrameworkBridge',
     'Generic',
     'Store',
     'Inventory',
