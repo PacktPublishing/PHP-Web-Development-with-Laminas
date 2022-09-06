@@ -11,7 +11,7 @@ class Inventory extends AbstractModel
     public int $minimum;
     public int $reserved;
     
-    public function exchangeArray($data)
+    public function exchangeArray($data):void
     {
         $this->product = new Product();
         $this->product->code = ($data['code_product'] ?? 0);

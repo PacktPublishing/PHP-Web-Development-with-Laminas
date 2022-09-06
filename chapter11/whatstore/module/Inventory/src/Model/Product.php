@@ -19,7 +19,7 @@ class Product extends AbstractModel
     public float $price;
     public Discount $discount;
     
-    public function exchangeArray($data)
+    public function exchangeArray($data):void
     {
         $this->code = ($data['code'] ?? 0);
         $this->name = ($data['name'] ?? '');

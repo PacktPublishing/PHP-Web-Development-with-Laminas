@@ -26,7 +26,7 @@ class PurchaseOrder extends AbstractModel
     const DELIVERED = 5;
     const CANCELLED = 6;
     
-    public function exchangeArray($data)
+    public function exchangeArray($data):void
     {
         $this->code = ($data['code'] ?? 0);
         $this->status = ($data['status'] ?? 0);

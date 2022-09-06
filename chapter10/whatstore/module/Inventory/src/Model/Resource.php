@@ -18,7 +18,7 @@ class Resource extends AbstractModel
     public String $name;
     public String $method;
     
-    public function exchangeArray($data)
+    public function exchangeArray($data):void
     {
         $this->code = ($data['code'] ?? 0);
         $this->name = ($data['name'] ?? '');

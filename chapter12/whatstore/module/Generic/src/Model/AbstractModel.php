@@ -9,7 +9,7 @@ abstract class AbstractModel
         $this->exchangeArray([]);
     }    
     
-    public function exchangeArray($data)
+    public function exchangeArray($data):void
     {
         $attributes = get_object_vars($this);
         foreach ($attributes as $attribute => $value) {

@@ -18,7 +18,7 @@ class RoleResource extends AbstractModel
     public Resource $resource;
     public Role $role;
     
-    public function exchangeArray($data)
+    public function exchangeArray($data):void
     {
         $this->code = ($data['code'] ?? 0);
         $this->resource = new Resource();

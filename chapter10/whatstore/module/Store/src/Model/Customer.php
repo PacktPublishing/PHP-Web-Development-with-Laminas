@@ -19,7 +19,7 @@ class Customer extends AbstractModel
     public String $password;
     public String $email;
     
-    public function exchangeArray($data)
+    public function exchangeArray($data):void
     {
         $this->IDN = ($data['IDN'] ?? 0);
         $this->name = ($data['name'] ?? '');

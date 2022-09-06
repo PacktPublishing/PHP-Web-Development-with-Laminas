@@ -10,7 +10,7 @@ class Discount extends AbstractModel
     public string $operator;
     public float $factor;
     
-    public function exchangeArray($data)
+    public function exchangeArray($data):void
     {
         $this->code = ($data['code'] ?? 0);
         $this->name = ($data['name'] ?? '');

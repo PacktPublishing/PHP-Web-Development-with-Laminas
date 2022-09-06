@@ -20,7 +20,7 @@ class OrderItem extends AbstractModel
     public float $price;
     public int $amount;
     
-    public function exchangeArray($data)
+    public function exchangeArray($data):void
     {
         $this->code_order = ($data['code_order'] ?? 0);
         $this->code_product = ($data['code_product'] ?? 0);

@@ -10,7 +10,7 @@ class Employee extends AbstractModel
     public String $nickname;    
     public String $password;
     
-    public function exchangeArray($data)
+    public function exchangeArray($data):void
     {
         $this->ID = ($data['ID'] ?? 0);
         $this->name = ($data['name'] ?? '');

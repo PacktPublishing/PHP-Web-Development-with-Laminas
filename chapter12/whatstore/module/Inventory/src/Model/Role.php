@@ -16,7 +16,7 @@ class Role extends AbstractModel
     public int $code;
     public String $name;
     
-    public function exchangeArray($data)
+    public function exchangeArray($data):void
     {
         $this->code = ($data['code'] ?? 0);
         $this->name = ($data['name'] ?? '');
