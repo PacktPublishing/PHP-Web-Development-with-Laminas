@@ -60,25 +60,4 @@ return [
         'factories' => [
             'CustomerTable' => Model\CustomerTableFactory::class
         ]
-    ],
-    'view_helpers' => [
-        'aliases' => [
-            'form' => Form::class,
-            'formText' => FormText::class,
-            'formSelect' => FormSelect::class,
-            'formNumber' => FormNumber::class,
-            'formHidden' => FormHidden::class,
-            'formLabel' => FormLabel::class,
-            'formPassword' => FormPassword::class,
-        ],
-        'factories' => [
-            Form::class => InvokableFactory::class,
-            FormText::class => InvokableFactory::class,
-            FormSelect::class => InvokableFactory::class,
-            FormNumber::class => InvokableFactory::class,
-            FormHidden::class => InvokableFactory::class,
-            FormLabel::class => InvokableFactory::class,
-            FormPassword::class => InvokableFactory::class
-        ]
-    ]    
-];
+    ]];

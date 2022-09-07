@@ -21,6 +21,12 @@ class Identity
         return ($auth->hasIdentity() && $container->context == $context);
     }
     
+    public static function get(): string
+    {
+        $auth = new AuthenticationService();
+        return $auth->getIdentity();
+    }
+    
     public static function clear(): void
     {
         $auth = new AuthenticationService();

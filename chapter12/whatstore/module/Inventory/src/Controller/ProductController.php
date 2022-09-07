@@ -5,7 +5,6 @@ namespace Inventory\Controller;
 
 use Laminas\Mvc\Controller\AbstractActionController;
 use Laminas\View\Model\ViewModel;
-use Laminas\View\Model\JsonModel;
 use Inventory\Model\ProductTable;
 use Inventory\Model\DiscountTable;
 use Inventory\Form\ProductForm;
@@ -24,7 +23,7 @@ class ProductController extends AbstractActionController
     public function indexAction()
     {
         $products = $this->productTable->getAll();
-        return new JsonModel(['products' => $products]);}
+        return new ViewModel(['products' => $products]);}
     
     public function editAction()
     {        

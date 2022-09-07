@@ -2,7 +2,6 @@
 namespace Inventory\Listener;
 
 use Laminas\Mvc\MvcEvent;
-use Laminas\Http\PhpEnvironment\Request;
 use Laminas\Session\Container;
 use Generic\Model\Identity;
 use Inventory\Model\Employee;
@@ -33,7 +32,7 @@ class InventoryAuthorizationListener
             $container = new Container();
             $rbac = $container->rbac;
             
-            $role = $authenticationService->getIdentity();
+            $role = Identity::get();
             if (!$rbac->isGranted($role,$permission)){
                 $event->getRouteMatch()->setParam('controller', 'menu');
                 $event->getRouteMatch()->setParam('action', 'no-permission');

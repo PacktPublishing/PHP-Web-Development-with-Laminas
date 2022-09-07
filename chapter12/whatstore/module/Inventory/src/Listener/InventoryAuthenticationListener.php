@@ -2,8 +2,8 @@
 namespace Inventory\Listener;
 
 use Laminas\Mvc\MvcEvent;
-use Laminas\Http\PhpEnvironment\Request;
 use Generic\Model\Identity;
+use Inventory\Model\Employee;
 
 class InventoryAuthenticationListener
 {
