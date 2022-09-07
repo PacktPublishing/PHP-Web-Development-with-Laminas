@@ -11,7 +11,6 @@ use Laminas\Filter\ToInt;
 use Laminas\Filter\StringToUpper;
 use Laminas\Filter\StringTrim;
 use Laminas\Filter\StripTags;
-use Laminas\Filter\StringToUpper;
 use Laminas\Validator\ValidatorChain;
 use Laminas\Validator\StringLength;
 use Laminas\I18n\Filter\Alnum;

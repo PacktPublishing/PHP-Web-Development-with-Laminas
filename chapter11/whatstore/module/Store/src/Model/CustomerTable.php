@@ -2,9 +2,6 @@
 declare(strict_types = 1);
 namespace Store\Model;
 
-use Laminas\Db\TableGateway\TableGateway;
-use Laminas\Db\TableGateway\TableGatewayInterface;
-use Laminas\Db\ResultSet\ResultSet;
 use Generic\Model\AbstractTable;
 use Generic\Model\AbstractModel;
 
@@ -34,5 +31,4 @@ class CustomerTable extends AbstractTable
         }
         return true;
     }
-    
 }
