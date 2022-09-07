@@ -1,16 +1,12 @@
 <?php
+declare(strict_types=1);
 namespace Store\Model;
 
 use Generic\Model\AbstractModel;
-use Laminas\Validator\EmailAddress;
 use Laminas\InputFilter\InputFilter;
 use Laminas\InputFilter\Input;
 use Laminas\Filter\FilterChain;
 use Laminas\Filter\ToInt;
-use Laminas\Filter\StringToUpper;
-use Laminas\Validator\ValidatorChain;
-use Laminas\Validator\StringLength;
-use Laminas\I18n\Filter\Alnum;
 use Laminas\Filter\ToFloat;
 
 class OrderItem extends AbstractModel
@@ -31,7 +27,7 @@ class OrderItem extends AbstractModel
     public function getInputFilter(): InputFilter
     {
         $inputFilter = new InputFilter();
-        
+
         $input = new Input('code_order');
         $filterChain = new FilterChain();
         $filterChain->attach(new ToInt());
@@ -43,22 +39,22 @@ class OrderItem extends AbstractModel
         $filterChain->attach(new ToInt());
         $input->setFilterChain($filterChain);
         $inputFilter->add($input);
-        
+ 
         $input = new Input('price');
         $filterChain = new FilterChain();
         $filterChain->attach(new ToFloat());
         $input->setFilterChain($filterChain);
         $inputFilter->add($input);
-        
+ 
         $input = new Input('amount');
         $filterChain = new FilterChain();
         $filterChain->attach(new ToInt());
         $input->setFilterChain($filterChain);
-        $inputFilter->add($input);        
-        
+        $inputFilter->add($input);
+
         return $inputFilter;
     }
-    
+
     public function toArray()
     {
         $attributes = get_object_vars($this);
