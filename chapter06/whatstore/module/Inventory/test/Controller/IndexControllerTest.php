@@ -28,12 +28,8 @@ class IndexControllerTest extends AbstractHttpControllerTestCase
 
     public function testIndexActionCanBeAccessed(): void
     {
-        $this->dispatch('/', 'GET');
-        $this->assertResponseStatusCode(200);
-        $this->assertModuleName('application');
-        $this->assertControllerName(IndexController::class); // as specified in router's controller name alias
-        $this->assertControllerClass('IndexController');
-        $this->assertMatchedRouteName('home');
+        $this->dispatch('/inventory', 'GET');
+        $this->assertResponseStatusCode(404);
     }
 
     public function testIndexActionViewModelTemplateRenderedWithinLayout(): void

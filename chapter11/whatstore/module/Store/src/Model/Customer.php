@@ -6,7 +6,11 @@ use Laminas\Validator\EmailAddress;
 use Laminas\InputFilter\InputFilter;
 use Laminas\InputFilter\Input;
 use Laminas\Filter\FilterChain;
+use Laminas\Filter\HtmlEntities;
 use Laminas\Filter\ToInt;
+use Laminas\Filter\StringToUpper;
+use Laminas\Filter\StringTrim;
+use Laminas\Filter\StripTags;
 use Laminas\Filter\StringToUpper;
 use Laminas\Validator\ValidatorChain;
 use Laminas\Validator\StringLength;
@@ -61,6 +65,11 @@ class Customer extends AbstractModel
         $inputFilter->add($input);
         
         $input = new Input('email');
+        $filterChain = new FilterChain();
+        $filterChain->attach(new StripTags())
+        ->attach(new HtmlEntities())
+        ->attach(new StringTrim());
+        $input->setFilterChain($filterChain);        
         $validatorChain = new ValidatorChain();
         $validatorChain->attach(new EmailAddress());
         $input->setValidatorChain($validatorChain);

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ApplicationTest\Controller;
+namespace InventoryTest\Controller;
 
 use Application\Controller\IndexController;
 use Laminas\Stdlib\ArrayUtils;

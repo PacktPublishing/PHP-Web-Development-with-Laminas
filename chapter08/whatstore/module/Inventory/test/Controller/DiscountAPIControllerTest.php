@@ -29,6 +29,7 @@ class DiscountAPIControllerTest extends AbstractHttpControllerTestCase
     public function testDiscountInsert(): void
     {
         $_POST = [
+            'code' => 0,
             'name' => 'no discount',
             'operator' => '-',
             'factor' => 0
@@ -43,7 +44,7 @@ class DiscountAPIControllerTest extends AbstractHttpControllerTestCase
     
     public function testDiscountRecover(): void
     {
-        $name = 'no discount';
+        $name = strtoupper('no discount'); // filter has capitalized the letters
         $this->dispatch('/inventoryapi/discountapi/' . $name, 'GET');
         $this->assertResponseStatusCode(200);
         $this->assertModuleName('inventory');

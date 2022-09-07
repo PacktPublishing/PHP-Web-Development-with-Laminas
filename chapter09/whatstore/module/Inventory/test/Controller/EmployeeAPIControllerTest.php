@@ -58,7 +58,7 @@ class EmployeeAPIControllerTest extends AbstractHttpControllerTestCase
     public function testEmployeeUpdate(): void
     {
         $employeeTable = $this->getApplication()->getServiceManager()->get('EmployeeTable');
-        $employee = $employeeTable->getByField('name',strtoupper('Jackson Heart'))
+        $employee = $employeeTable->getByField('name',strtoupper('Jackson Heart'));
         $employee->name = 'William Cody';
         $employee->nickname = 'Buffalo Bill';
         $_POST = $employee->toArray();

@@ -20,7 +20,7 @@ class DiscountAPIController extends AbstractRestfulController
     {        
         $discount = new Discount();
         $inputFilter = $discount->getInputFilter();
-        $inputFilter->setData($data);
+        $inputFilter->setData($data); 
         if (!$inputFilter->isValid()){
             return new JsonModel(['inserted' => 'invalid']);
         }
