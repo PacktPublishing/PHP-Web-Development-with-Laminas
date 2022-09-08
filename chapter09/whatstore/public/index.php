@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 use Laminas\Mvc\Application;
 use Laminas\Stdlib\ArrayUtils;
-use Laminas\Mvc\MvcEvent;
-use Inventory\Listener\InventoryAuthenticationListener;
 
 /**
  * This makes our life easier when dealing with paths. Everything is relative
@@ -41,6 +39,4 @@ if (file_exists(__DIR__ . '/../config/development.config.php')) {
 }
 
 // Run the application!
-$app = Application::init($appConfig);
-$app->getEventManager()->attach(MvcEvent::EVENT_ROUTE,[InventoryAuthenticationListener::class,'verifyIdentity']);
-$app->run();
+$app = Application::init($appConfig)->run();
