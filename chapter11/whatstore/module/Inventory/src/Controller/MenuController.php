@@ -9,12 +9,12 @@ class MenuController extends AbstractActionController
     public function indexAction()
     {
         $auth = new AuthenticationService();
-        return new ViewModel(['user' => $auth->getIdentity()]);
+        return new ViewModel(['user' => $auth->getIdentity()->name]);
     }
     
     public function noPermissionAction()
     {
         $auth = new AuthenticationService();
-        return new ViewModel(['user' => $auth->getIdentity()]);
+        return new ViewModel(['user' => $auth->getIdentity()->name]);
     }
 }

@@ -2,9 +2,6 @@
 namespace Inventory\Listener;
 
 use Laminas\Mvc\MvcEvent;
-use Laminas\Authentication\AuthenticationService;
-use Laminas\Http\PhpEnvironment\Request;
-use Laminas\Session\Container;
 
 class InventoryAuthorizationListener
 {
