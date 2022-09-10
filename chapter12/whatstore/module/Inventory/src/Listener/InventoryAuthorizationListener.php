@@ -2,8 +2,6 @@
 namespace Inventory\Listener;
 
 use Laminas\Mvc\MvcEvent;
-use Laminas\Session\Container;
-use Generic\Model\Identity;
 use Inventory\Model\Employee;
 
 class InventoryAuthorizationListener
@@ -14,7 +12,8 @@ class InventoryAuthorizationListener
         if ($routeName !== 'inventory'){
             return;
         }
-        if (Identity::has(Employee::class)){
+        $identityManager = $event->getApplication()->getServiceManager()->get('IdentityManager');
+        if ($identityManager->hasIdentity()){
             $params = $event->getRouteMatch()->getParams();
             $controller = $params['controller'];
             $action = $params['action'] ?? 'rest';            
@@ -29,10 +28,9 @@ class InventoryAuthorizationListener
             $action = ($action == 'PUT' ? 'update': $action);
             $permission = $controller . '.' . $action . ':' . $method;
             
-            $container = new Container();
-            $rbac = $container->rbac;
+            $rbac = $identityManager->getRbac();
             
-            $role = Identity::get();
+            $role = $identityManager->getIdentity();
             if (!$rbac->isGranted($role,$permission)){
                 $event->getRouteMatch()->setParam('controller', 'menu');
                 $event->getRouteMatch()->setParam('action', 'no-permission');
