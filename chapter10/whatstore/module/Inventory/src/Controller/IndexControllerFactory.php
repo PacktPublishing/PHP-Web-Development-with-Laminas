@@ -10,14 +10,8 @@ class IndexControllerFactory implements FactoryInterface
 
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $employeeTable = $container->get('EmployeeTable');
-        $adapter = new CredentialTreatmentAdapter($container->get('DbAdapter'));
-        $adapter->setTableName('employees');
-        $adapter->setIdentityColumn('nickname');
-        $adapter->setCredentialColumn('password');
+        $identityManager = $container->get('IdentityManager');
         
-        $resourceTable = $container->get('ResourceTable');
-        
-        return new IndexController($adapter, $resourceTable);
+        return new IndexController($identityManager);
     }
 }

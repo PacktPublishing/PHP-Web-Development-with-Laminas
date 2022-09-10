@@ -14,8 +14,8 @@ class InventoryAuthorizationListener
         if (!$routeName == 'inventory'){
             return;
         }
-        $authenticationService = new AuthenticationService();
-        if ($authenticationService->hasIdentity()){
+        $identityManager = $event->getApplication()->getServiceManager()->get('IdentityManager'); 
+        if ($identityManager->hasIdentity()){
             $params = $event->getRouteMatch()->getParams();
             $controller = $params['controller'];
             $action = $params['action'];            
@@ -27,10 +27,9 @@ class InventoryAuthorizationListener
             $method = $event->getRequest()->getMethod();
             $permission = $controller . '.' . $action . ':' . $method;
             
-            $container = new Container();
-            $rbac = $container->rbac;
+            $rbac = $identityManager->getRbac();
             
-            $role = $authenticationService->getIdentity();
+            $role = $identityManager->getIdentity();
             if (!$rbac->isGranted($role,$permission)){
                 $event->getRouteMatch()->setParam('controller', 'menu');
                 $event->getRouteMatch()->setParam('action', 'no-permission');

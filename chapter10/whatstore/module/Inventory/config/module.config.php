@@ -103,7 +103,8 @@ return [
             'RoleTable' => Model\RoleTableFactory::class,
             'ResourceTable' => Model\ResourceTableFactory::class,
             'RoleResourceTable' => Model\RoleResourceTableFactory::class,
-            'EmployeeRoleTable' => Model\EmployeeRoleTableFactory::class
+            'EmployeeRoleTable' => Model\EmployeeRoleTableFactory::class,
+            'IdentityManager' => Model\IdentityManagerFactory::class
         ]
     ]
 ];
