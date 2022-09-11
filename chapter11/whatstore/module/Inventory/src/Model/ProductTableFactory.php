@@ -2,10 +2,10 @@
 declare(strict_types = 1);
 namespace Inventory\Model;
 
-use Interop\Container\ContainerInterface;
 use Laminas\Db\ResultSet\ResultSet;
 use Laminas\Db\TableGateway\TableGateway;
 use Laminas\ServiceManager\Factory\FactoryInterface;
+use Psr\Container\ContainerInterface;
 
 class ProductTableFactory implements FactoryInterface
 {
@@ -15,9 +15,8 @@ class ProductTableFactory implements FactoryInterface
         $resultSetPrototype = new ResultSet();
         $resultSetPrototype->setArrayObjectPrototype(new Product());
         $tableGateway = new TableGateway('products', $adapter, null, $resultSetPrototype);
-        $productTable = new ProductTable($tableGateway);
         $inventoryTable = $container->get('InventoryTable');
-        $productTable->setInventoryTable($inventoryTable);
+        $productTable = new ProductTable($tableGateway, $inventoryTable);
         return $productTable;
     }
 }

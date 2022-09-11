@@ -1,6 +1,6 @@
 <?php
 declare(strict_types = 1);
-namespace Inventory\Model;
+namespace Store\Model;
 
 use Laminas\Authentication\Adapter\DbTable\CredentialTreatmentAdapter;
 use Laminas\ServiceManager\Factory\FactoryInterface;
@@ -11,16 +11,12 @@ class IdentityManagerFactory implements FactoryInterface
     public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null)
     {
         $adapter = new CredentialTreatmentAdapter($container->get('DbAdapter'));
-        $adapter->setTableName('employees');
-        $adapter->setIdentityColumn('nickname');
+        $adapter->setTableName('customers');
+        $adapter->setIdentityColumn('email');
         $adapter->setCredentialColumn('password');
         
-        $resourceTable = $container->get('ResourceTable');
+        $encryptionMethod = array(new Customer(),'encrypt');
         
-        $encryptionMethod = array(new Employee(),'encrypt');
-        
-        $identityManager = new IdentityManager($adapter, $encryptionMethod);
-        $identityManager->setResourceTable($resourceTable);
-        return $identityManager;
+        return new IdentityManager($adapter, $encryptionMethod);
     }
 }

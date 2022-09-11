@@ -19,9 +19,10 @@ class ProductTable extends AbstractTable
     
     private ?InventoryTable $inventoryTable;
     
-    public function setInventoryTable(InventoryTable $inventoryTable): void
+    public function __construct(TableGatewayInterface $tableGateway, InventoryTable $inventoryTable)
     {
-        $this->inventoryTable = $inventoryTable; 
+        $this->tableGateway = $tableGateway;
+        $this->inventoryTable = $inventoryTable;        
     }
     
     public function getAll($where = null): iterable {

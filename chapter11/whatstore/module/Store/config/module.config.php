@@ -9,6 +9,7 @@ use Laminas\Router\Http\Segment;
 use Laminas\ServiceManager\Factory\InvokableFactory;
 use Laminas\Form\View\Helper\FormFile;
 use Laminas\Form\View\Helper\FormEmail;
+use Store\Model\IdentityManager;
 
 return [
     'router' => [
@@ -81,7 +82,8 @@ return [
             'CustomerTable' => Model\CustomerTableFactory::class,
             'ProductBasket' => Model\ProductBasketFactory::class,
             'PurchaseOrderTable' => Model\PurchaseOrderTableFactory::class,
-            'OrderItemTable' => Model\OrderItemTableFactory::class
+            'OrderItemTable' => Model\OrderItemTableFactory::class,
+            IdentityManager::class => Model\IdentityManagerFactory::class
         ]
     ]
 ];

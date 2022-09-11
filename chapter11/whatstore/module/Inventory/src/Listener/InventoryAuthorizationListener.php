@@ -29,7 +29,7 @@ class InventoryAuthorizationListener
             
             $rbac = $identityManager->getRbac();
             
-            $role = $identityManager->getIdentity();
+            $role = $identityManager->getIdentity()->name;
             if (!$rbac->isGranted($role,$permission)){
                 $event->getRouteMatch()->setParam('controller', 'menu');
                 $event->getRouteMatch()->setParam('action', 'no-permission');

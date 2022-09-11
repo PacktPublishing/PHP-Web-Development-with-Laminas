@@ -4,23 +4,19 @@ declare(strict_types=1);
 namespace Store\Controller;
 
 use Laminas\Mvc\Controller\AbstractActionController;
+use Laminas\View\Model\JsonModel;
 use Laminas\View\Model\ViewModel;
-use Store\Model\CustomerTable;
-use Store\Model\Customer;
 use Store\Form\CustomerForm;
 use Store\Form\LoginForm;
-use Laminas\Authentication\AuthenticationService;
-use Laminas\Session\SessionManager;
-use Laminas\Authentication\Adapter\AdapterInterface;
-use Laminas\View\Model\JsonModel;
+use Store\Model\IdentityManager;
 
 class CustomerController extends AbstractActionController
 {   
-    private ?AdapterInterface $adapter;
+    private ?IdentityManager $identityManager;
     
-    public function __construct(AdapterInterface $adapter)
+    public function __construct(IdentityManager $identityManager)
     {
-        $this->adapter = $adapter;
+        $this->identityManager = $identityManager;
     }
     
     public function indexAction()
@@ -35,25 +31,8 @@ class CustomerController extends AbstractActionController
     {
         $email = $this->request->getPost('email');
         $password = $this->request->getPost('password');
-        $this->adapter->setIdentity($email);
-        $this->adapter->setCredential(Customer::encrypt($password));
         
-        $logged = false;
-        
-        $auth = new AuthenticationService();
-        $auth->setAdapter($this->adapter);
-        
-        $result = $auth->authenticate();
-        
-        if ($result->isValid()) {
-            error_log('user ' . $result->getIdentity() . ' is logged');
-            Customer::setCustomer($this->adapter->getResultRowObject(null,'password'));
-            $logged = true;
-        } else {
-            foreach ($result->getMessages() as $message) {
-                error_log($message);
-            }
-        }
+        $logged = $this->identityManager->login($email, $password);        
         
         return new JsonModel([
             'logged' => $logged
@@ -70,14 +49,7 @@ class CustomerController extends AbstractActionController
     
     public function logoutAction()
     {
-        $auth = new AuthenticationService();
-        $auth->clearIdentity();
-        $session = new SessionManager();
-        try {
-            $session->destroy();
-        } catch (\Exception $e) {
-            error_log($e->getMessage());
-        }
+        $this->identityManager->logout();
         
         return $this->redirect()->toRoute('store');
     }

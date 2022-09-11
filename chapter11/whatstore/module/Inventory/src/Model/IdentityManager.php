@@ -1,65 +1,27 @@
 <?php
 namespace Inventory\Model;
 
-use Laminas\Authentication\Adapter\AdapterInterface;
-use Laminas\Authentication\AuthenticationService;
-use Laminas\Session\SessionManager;
+use Generic\Model\IdentityManager as GenericIdentityManager;
 use Laminas\Permissions\Rbac\Rbac;
-use Laminas\Session\Container;
 use Laminas\Permissions\Rbac\Role;
+use Laminas\Session\Container;
 
-class IdentityManager
+class IdentityManager extends GenericIdentityManager
 {
-    private ?AdapterInterface $adapter;
     private ?ResourceTable $resourceTable;
-    private ?array $encryptionMethod;
-    private ?AuthenticationService $auth;
     
-    public function __construct(AdapterInterface $adapter, ResourceTable $resourceTable, array $encryptionMethod)
+    public function setResourceTable(ResourceTable $resourceTable)
     {
-        $this->adapter = $adapter;
         $this->resourceTable = $resourceTable;
-        $this->encryptionMethod = $encryptionMethod;
-        $this->auth = new AuthenticationService();
     }
 
-    public function login(string $identity, string $credential): bool
+    protected function doCustomTasks(): void
     {
-        $this->adapter->setIdentity($identity);
-        $credential = call_user_func($this->encryptionMethod, $credential);
-        $this->adapter->setCredential($credential);
-        
-        $logged = false;
-        
-        $this->auth->setAdapter($this->adapter);
-        
-        $result = $this->auth->authenticate();
-        
-        if ($result->isValid()) {
-            error_log('user ' . $result->getIdentity() . ' is logged');
-            $this->auth->getStorage()->write($this->adapter->getResultRowObject(null,'password'));
-            $this->loadAuthorizationData();
-            return true;
-        } else {
-            foreach ($result->getMessages() as $message) {
-                error_log($message);
-            }
-        }
-        return false;
+        $this->auth->getStorage()->write($this->adapter->getResultRowObject(null,'password'));
+        $this->loadAuthorizationData();        
     }
     
-    public function logout(): void
-    {
-        $this->auth->clearIdentity();
-        $session = new SessionManager();
-        try {
-            $session->destroy();
-        } catch (\Exception $e) {
-            error_log($e->getMessage());
-        }        
-    }
-    
-    public function loadAuthorizationData(): void
+    private function loadAuthorizationData(): void
     {
         $role = new Role($this->auth->getIdentity()->name);
         
@@ -76,17 +38,7 @@ class IdentityManager
             unset($container->rbac);
         }
         $container->rbac = $rbac;
-    }
-    
-    public function getIdentity(): string
-    {
-        return $this->auth->getIdentity()->name;
-    }
-    
-    public function hasIdentity(): bool
-    {
-        return $this->auth->hasIdentity();
-    }
+    }    
     
     public function getRbac(): Rbac
     {
