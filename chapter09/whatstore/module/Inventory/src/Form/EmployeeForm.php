@@ -2,10 +2,9 @@
 namespace Inventory\Form;
 
 use Laminas\Form\Form;
-use Laminas\Form\Element;
-use Laminas\Form\Element\Text;
 use Laminas\Form\Element\Hidden;
 use Laminas\Form\Element\Password;
+use Laminas\Form\Element\Text;
 
 class EmployeeForm extends Form {
     public function __construct($name = 'employee'){

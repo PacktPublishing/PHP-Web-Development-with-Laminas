@@ -2,10 +2,9 @@
 namespace Inventory\Form;
 
 use Laminas\Form\Form;
-use Laminas\Form\Element;
-use Laminas\Form\Element\Text;
 use Laminas\Form\Element\Hidden;
 use Laminas\Form\Element\Select;
+use Laminas\Form\Element\Text;
 
 class ResourceForm extends Form {
     public function __construct($name = 'resource'){

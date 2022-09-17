@@ -2,7 +2,7 @@
 namespace Store\Controller;
 
 use Laminas\ServiceManager\Factory\FactoryInterface;
-use Interop\Container\ContainerInterface;
+use Psr\Container\ContainerInterface;
 
 class IndexControllerFactory implements FactoryInterface
 {

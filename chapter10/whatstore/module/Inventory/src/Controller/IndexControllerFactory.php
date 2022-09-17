@@ -2,8 +2,7 @@
 namespace Inventory\Controller;
 
 use Laminas\ServiceManager\Factory\FactoryInterface;
-use Interop\Container\ContainerInterface;
-use Laminas\Authentication\Adapter\DbTable\CredentialTreatmentAdapter;
+use Psr\Container\ContainerInterface;
 
 class IndexControllerFactory implements FactoryInterface
 {

@@ -1,5 +1,5 @@
 <?php
-define('SESSION_ENABLED',false);
+if (!defined('SESSION_ENABLED')) define('SESSION_ENABLED',false);
 
 /**
  * If you need an environment-specific system or application configuration,

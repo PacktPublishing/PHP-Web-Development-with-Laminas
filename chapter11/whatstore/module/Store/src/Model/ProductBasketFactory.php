@@ -2,10 +2,8 @@
 namespace Store\Model;
 
 use Laminas\ServiceManager\Factory\FactoryInterface;
-
-use Interop\Container\ContainerInterface;
 use Laminas\Session\Container;
-use Laminas\Stdlib\ArrayObject;
+use Psr\Container\ContainerInterface;
 
 class ProductBasketFactory implements FactoryInterface
 {

@@ -8,6 +8,8 @@ use Application\Controller\IndexController;
 use Laminas\Stdlib\ArrayUtils;
 use Laminas\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
 
+define('APP_ROOT', (dirname(realpath(__DIR__ . '/../../../../'))));
+
 class IndexControllerTest extends AbstractHttpControllerTestCase
 {
     public function setUp(): void
@@ -34,12 +36,6 @@ class IndexControllerTest extends AbstractHttpControllerTestCase
         $this->assertControllerName(IndexController::class); // as specified in router's controller name alias
         $this->assertControllerClass('IndexController');
         $this->assertMatchedRouteName('home');
-    }
-
-    public function testIndexActionViewModelTemplateRenderedWithinLayout(): void
-    {
-        $this->dispatch('/', 'GET');
-        $this->assertQuery('.container .jumbotron');
     }
 
     public function testInvalidRouteDoesNotCrash(): void

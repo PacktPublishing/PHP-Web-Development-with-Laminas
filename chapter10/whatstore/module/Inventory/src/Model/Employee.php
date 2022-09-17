@@ -2,14 +2,14 @@
 namespace Inventory\Model;
 
 use Generic\Model\AbstractModel;
-use Laminas\InputFilter\InputFilter;
-use Laminas\InputFilter\Input;
 use Laminas\Filter\FilterChain;
-use Laminas\Filter\ToInt;
 use Laminas\Filter\StringToUpper;
-use Laminas\Validator\ValidatorChain;
+use Laminas\Filter\ToInt;
 use Laminas\I18n\Filter\Alnum;
+use Laminas\InputFilter\Input;
+use Laminas\InputFilter\InputFilter;
 use Laminas\Validator\StringLength;
+use Laminas\Validator\ValidatorChain;
 
 class Employee extends AbstractModel
 {

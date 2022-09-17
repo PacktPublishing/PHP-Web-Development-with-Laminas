@@ -1,9 +1,9 @@
 <?php
 namespace Store\Controller;
 
-use Laminas\ServiceManager\Factory\FactoryInterface;
-use Interop\Container\ContainerInterface;
 use Laminas\Authentication\Adapter\DbTable\CredentialTreatmentAdapter;
+use Laminas\ServiceManager\Factory\FactoryInterface;
+use Psr\Container\ContainerInterface;
 
 class CustomerControllerFactory implements FactoryInterface
 {

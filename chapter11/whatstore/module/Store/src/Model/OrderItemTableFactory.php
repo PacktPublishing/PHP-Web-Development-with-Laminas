@@ -2,10 +2,10 @@
 declare(strict_types = 1);
 namespace Store\Model;
 
-use Interop\Container\ContainerInterface;
 use Laminas\Db\ResultSet\ResultSet;
 use Laminas\Db\TableGateway\TableGateway;
 use Laminas\ServiceManager\Factory\FactoryInterface;
+use Psr\Container\ContainerInterface;
 
 class OrderItemTableFactory implements FactoryInterface
 {

@@ -2,8 +2,7 @@
 namespace Store\Controller;
 
 use Laminas\ServiceManager\Factory\FactoryInterface;
-use Interop\Container\ContainerInterface;
-use Laminas\Session\Container;
+use Psr\Container\ContainerInterface;
 
 class ProductBasketAPIControllerFactory implements FactoryInterface
 {
