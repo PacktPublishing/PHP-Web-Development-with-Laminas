@@ -9,7 +9,7 @@ class ProductAPIControllerFactory implements FactoryInterface
 
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $producTable = $container->get('ProductTable');
-        return new ProductAPIController($producTable);
+        $productTable = $container->get('ProductTable');
+        return new ProductAPIController($productTable);
     }
 }
