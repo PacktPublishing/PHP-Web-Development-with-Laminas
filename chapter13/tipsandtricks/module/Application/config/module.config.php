@@ -39,14 +39,6 @@ return [
             Controller\IndexController::class => InvokableFactory::class,
         ],
     ],
-    'controller_plugins' => [
-        'factories' => [
-            FlashMessenger::class => InvokableFactory::class
-        ],
-        'aliases' => [
-            'flashMessenger' => FlashMessenger::class
-        ]
-    ],
     'view_manager' => [
         'display_not_found_reason' => true,
         'display_exceptions'       => true,
@@ -65,10 +57,5 @@ return [
         'strategies' => [
             'ViewJsonStrategy',
         ],
-    ],
-    'view_helpers' => [
-        'invokables' => [
-            'flashMessenger' => \Laminas\Mvc\Plugin\FlashMessenger\View\Helper\FlashMessenger::class
-        ]
     ]
 ];
