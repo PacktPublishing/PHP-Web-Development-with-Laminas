@@ -1,6 +1,4 @@
 <?php
-use Laminas\Authentication\AuthenticationService;
-
 /**
  * @var Laminas\View\Renderer\PhpRenderer $this
  */
@@ -9,9 +7,8 @@ $this->placeholder('products')->form = $this->form;
 $this->placeholder('products')->index = 1;
 $this->partialLoop()->setObjectKey('product');
 
-$authenticationService = new AuthenticationService();
 $link = ['action' => 'index', 'label' => 'Login'];
-if ($authenticationService->hasIdentity()){
+if ($this->authenticated){
     $link = ['action' => 'logout', 'label' => 'Logout'];
 }
 ?>

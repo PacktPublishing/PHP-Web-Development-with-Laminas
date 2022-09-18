@@ -1,12 +1,12 @@
 <?php
 namespace Inventory\Model;
 
-use Laminas\Authentication\Adapter\AdapterInterface;
 use Laminas\Authentication\AuthenticationService;
-use Laminas\Session\SessionManager;
+use Laminas\Authentication\Adapter\AdapterInterface;
 use Laminas\Permissions\Rbac\Rbac;
-use Laminas\Session\Container;
 use Laminas\Permissions\Rbac\Role;
+use Laminas\Session\Container;
+use Laminas\Session\SessionManager;
 
 class IdentityManager
 {

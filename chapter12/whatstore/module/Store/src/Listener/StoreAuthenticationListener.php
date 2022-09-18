@@ -2,8 +2,7 @@
 namespace Store\Listener;
 
 use Laminas\Mvc\MvcEvent;
-use Generic\Model\Identity;
-use Store\Model\Customer;
+use Store\Model\IdentityManager;
 
 class StoreAuthenticationListener
 {
@@ -18,7 +17,8 @@ class StoreAuthenticationListener
         if ($controller !== 'order'){
             return;
         }
-        if (!Identity::has(Customer::class)){
+        $identityManager = $event->getApplication()->getServiceManager()->get(IdentityManager::class);
+        if (!$identityManager->hasIdentity()){
             $action = $params['action'];
             if ($controller == 'index' && ($action == 'index' || $action == 'login')){
                 return;

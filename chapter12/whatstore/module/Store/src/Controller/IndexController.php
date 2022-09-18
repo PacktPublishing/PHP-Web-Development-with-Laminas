@@ -9,14 +9,17 @@ use Laminas\View\Model\ViewModel;
 use Store\Form\ProductForm;
 use Inventory\Model\ProductTable;
 use Laminas\Db\Sql\Where;
+use Store\Model\IdentityManager;
 
 class IndexController extends AbstractActionController
 {
     private ProductTable $productTable;
+    private IdentityManager $identityManager;
     
-    public function __construct(ProductTable $productTable)
+    public function __construct(ProductTable $productTable, IdentityManager $identityManager)
     {
         $this->productTable = $productTable;
+        $this->identityManager = $identityManager;
     }
     
     public function indexAction()
@@ -32,7 +35,8 @@ class IndexController extends AbstractActionController
         $form = new ProductForm();
         return new ViewModel([
             'form' => $form,
-            'products' => $products            
+            'products' => $products,
+            'authenticated' => $this->identityManager->hasIdentity()
         ]);
     }
 }

@@ -2,8 +2,8 @@
 namespace Inventory\Listener;
 
 use Laminas\Mvc\MvcEvent;
-use Generic\Model\Identity;
-use Inventory\Model\Employee;
+use Laminas\Authentication\AuthenticationService;
+use Laminas\Http\PhpEnvironment\Request;
 
 class InventoryAuthenticationListener
 {
@@ -13,7 +13,8 @@ class InventoryAuthenticationListener
         if ($routeName !== 'inventory'){
             return;
         }
-        if (!Identity::has(Employee::class)){
+        $authenticationService = new AuthenticationService();
+        if (!$authenticationService->hasIdentity()){
             $params = $event->getRouteMatch()->getParams();
             $controller = $params['controller'];
             $action = $params['action'];
