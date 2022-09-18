@@ -1,0 +1,24 @@
+<?php
+$this->headScript()->appendScript(file_get_contents(__DIR__ . '/register.js'));
+?>
+<h1>Customer Registration</h1>
+<?php
+$form = $this->form;
+echo $this->form()->openTag($form);
+echo $this->formLabel($form->get('IDN'));
+echo $this->formNumber($form->get('IDN')) . '<br/>';
+echo $this->formLabel($form->get('name'));
+echo $this->formText($form->get('name')) . '<br/>';
+echo $this->formLabel($form->get('password'));
+echo $this->formPassword($form->get('password')) . '<br/>';
+echo $this->formLabel($form->get('email'));
+echo $this->formEmail($form->get('email')) . '<br/>';
+echo $this->form()->closeTag();
+?>
+<button id="save">save</button>
+<p>
+	<span id="pkey" value="<?=$form->get('IDN')->getValue()?>"></span>
+	<span id="api" url="<?=$this->url('storeapi',['controller' => 'customerapi'])?>"></span>
+	<span id="target" url="<?=$this->url('store',['controller' => 'customer'])?>"></span>
+	<a href="<?=$this->url('store',['controller' => 'customer'])?>">Go back</a>
+</p>

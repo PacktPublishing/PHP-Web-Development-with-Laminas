@@ -1,0 +1,34 @@
+<?php
+/**
+ * @var Laminas\View\Renderer\PhpRenderer $this
+ */
+$this->headScript()->appendScript(file_get_contents(__DIR__ . '/index.js'));
+$this->partialLoop()->setObjectKey('item');
+$this->placeholder('order')->total = 0;
+?>
+<p>It looks a good purchase, <?=$this->customer->name?>!</p>
+<h1>Close purchase order</h1>
+<table class="table">
+<thead>
+<tr>
+<th>code</th>
+<th>name</th>
+<th>price</th>
+<th>amount</th>
+</tr>
+</thead>
+<tbody>
+<?=$this->partialLoop('items',$this->items)?>
+</tbody>
+<tfoot>
+<tr>
+<td colspan="2">Total<td>
+<td><?=$this->placeholder('order')->total?></td>
+</tr>
+</tfoot>
+</table>
+<span id="api" url="<?=$this->url('storeapi',['controller' => 'orderapi'])?>"></span>
+<span id="target" url="<?=$this->url('store',['controller' => 'productbasket'])?>"></span>
+<p><button id="close">Dispatch purchase order</button></p>
+<p><a href="<?=$this->url('store')?>">Keep buying</a></p>   
+

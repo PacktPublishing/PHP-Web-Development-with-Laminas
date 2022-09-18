@@ -1,0 +1,35 @@
+<?php
+$this->headScript()->appendScript(file_get_contents(__DIR__ . '/index.js'));
+?>
+<h1>Product Inventories</h1>
+<table class="table">
+	<thead>
+		<tr>
+			<th>code</th>
+			<th>name</th>
+			<th>amount</th>
+			<th>maximum</th>
+			<th>minimum</th>
+			<th>reserved</th>
+		</tr>
+	</thead>
+	<tbody>
+<?php
+foreach ($this->inventories as $inventory) :
+?>
+		<tr>
+			<td><button id="<?=$inventory->product->code?>" class="edit"><?=$inventory->product->code?></button></td>
+			<td><?=$inventory->product->name?></td>
+			<td><?=$inventory->amount?></td>
+			<td><?=$inventory->maximum?></td>
+			<td><?=$inventory->minimum?></td>
+			<td><?=$inventory->reserved?></td>
+		</tr>
+<?php
+endforeach;
+?>
+	</tbody>
+</table>
+<span id="api" url="<?=$this->url('inventoryapi',['controller' => 'inventoryapi'])?>"></span>
+<span id="target" url="<?=$this->url('inventory',['controller' => 'inventory'])?>"></span>
+<a href="<?=$this->url('inventory',['controller' => 'menu'])?>">Go back</a>
