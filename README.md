@@ -48,7 +48,7 @@ class SchoolClassTest extends TestCase
 
 This book is best suited for programming beginner or developers with some experience looking to create clean-coded object-oriented web applications. Knowledge of basic PHP syntax, specifically variables, control structures, and functions, will aid you in understanding the concepts covered.	
 
-With the following software and hardware list you can run all code files present in the book (Chapter 1-14).
+With the following software and hardware list you can run all code files present in the book (Chapter 03-13).
 
 We also provide a PDF file that has color images of the screenshots/diagrams used in this book. [Click here to download it](https://packt.link/qw7ug).
 
