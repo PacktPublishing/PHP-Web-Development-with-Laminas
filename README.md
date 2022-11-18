@@ -60,3 +60,8 @@ We also provide a PDF file that has color images of the screenshots/diagrams use
 
 ## Get to Know the Author
 **Flávio Lisboa** is development analyst in SERPRO in several projects for the Brazilian government, instructor of development software courses, teacher of development software disciplines and member of Brazilian PHP community. He also was a programmer of desktop applications for restaurants and industrial kitchens and system analyst in the international board of Bank of Brazil. Sometimes he writes sci-fi romances like The One: the Solitude and the Harmony and Pandino, the Emperor.	
+
+### Download a free PDF
+
+ <i>If you have already purchased a print or Kindle version of this book, you can get a DRM-free PDF version at no cost.<br>Simply click on the link to claim your free PDF.</i>
+<p align="center"> <a href="https://packt.link/free-ebook/9781803245362">https://packt.link/free-ebook/9781803245362 </a> </p>
